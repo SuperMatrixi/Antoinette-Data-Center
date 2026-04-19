@@ -167,10 +167,21 @@ function initTyna() {
   const lbtns = document.querySelectorAll('.tlang');
   let open = false;
 
+  function escapeHtml(text) {
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   function addMsg(text, role) {
     const d = document.createElement('div');
     d.className = `tmsg ${role}`;
-    d.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    d.innerHTML = escapeHtml(text)
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>');
     msgs.appendChild(d);
     msgs.scrollTop = msgs.scrollHeight;
   }
