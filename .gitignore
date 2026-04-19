@@ -1,0 +1,22 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Env and local configs
+.env
+.env.*
+*.local
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Build outputs
+build/
+dist/
