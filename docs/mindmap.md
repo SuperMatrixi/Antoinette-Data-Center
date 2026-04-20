@@ -45,7 +45,7 @@ adc-v6/
 │       ├── KalakoMediasLogo1.jpg
 │       ├── BecomBusinessAcaLogo1.png
 │       └── HelloMamizLogo1.png
-```
+│       └── AEOGEOSEOLogo1.png
 
 ## SECTIONS (scroll order)
 0. Topbar — LIVE badge + crypto/AI ticker + FR/EN switch + social icons
