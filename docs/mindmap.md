@@ -26,7 +26,7 @@ adc-v6/
 │       ├── Creativespace.png
 │       ├── Creativespaces1.png
 │       ├── AiExpert-Hermanninnterview.png
-│       ├── ADCVIBE-HDBOOK(1).gif
+│       ├── ADCVIBE-HDBOOK.gif
 │       ├── ADCQRCode.png
 │       ├── Chinesenewyear1.png
 │       ├── Humanintheloop.png
