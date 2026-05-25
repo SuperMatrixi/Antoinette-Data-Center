@@ -174,7 +174,9 @@
         </div>
       </article>
 
-      <div id='collection-component-1778804173842'></div>
+      <div id='collection-component-1778804173842'>
+        <a href="https://0qvf8m-ks.myshopify.com/collections/all" target="_blank" rel="noopener" class="btn btn-green shopify-fallback-btn" style="width:100%;max-width:320px;margin:0 auto">🛍️ Ouvrir la boutique Shopify</a>
+      </div>
 <script type="text/javascript">
 /*<![CDATA[*/
 (function () {
@@ -201,9 +203,12 @@
       storefrontAccessToken: '2fef7d7eb0910ba2033c962c9d03f728',
     });
     ShopifyBuy.UI.onReady(client).then(function (ui) {
+      var collectionNode = document.getElementById('collection-component-1778804173842');
+      if (!collectionNode) return;
+      collectionNode.innerHTML = '';
       ui.createComponent('collection', {
         id: '681420489048',
-        node: document.getElementById('collection-component-1778804173842'),
+        node: collectionNode,
         moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
         options: {
   "product": {
