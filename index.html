@@ -174,7 +174,7 @@
         </div>
       </article>
 
-      <div id='collection-component-1778804173842'></div>
+<div id='product-component-1779828686295'></div>
 <script type="text/javascript">
 /*<![CDATA[*/
 (function () {
@@ -201,9 +201,9 @@
       storefrontAccessToken: '2fef7d7eb0910ba2033c962c9d03f728',
     });
     ShopifyBuy.UI.onReady(client).then(function (ui) {
-      ui.createComponent('collection', {
-        id: '681420489048',
-        node: document.getElementById('collection-component-1778804173842'),
+      ui.createComponent('product', {
+        id: '15750987841880',
+        node: document.getElementById('product-component-1779828686295'),
         moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
         options: {
   "product": {
@@ -212,26 +212,40 @@
         "@media (min-width: 601px)": {
           "max-width": "calc(25% - 20px)",
           "margin-left": "20px",
-          "margin-bottom": "50px",
-          "width": "calc(25% - 20px)"
+          "margin-bottom": "50px"
         },
-        "img": {
-          "height": "calc(100% - 15px)",
-          "position": "absolute",
-          "left": "0",
-          "right": "0",
-          "top": "0"
-        },
-        "imgWrapper": {
-          "padding-top": "calc(75% + 15px)",
-          "position": "relative",
-          "height": "0"
+        "carousel-button": {
+          "display": "none"
         }
+      },
+      "title": {
+        "font-family": "Open Sans, sans-serif"
+      },
+      "button": {
+        ":hover": {
+          "background-color": "#5f9543"
+        },
+        "background-color": "#6aa54a",
+        ":focus": {
+          "background-color": "#5f9543"
+        },
+        "padding-left": "75px",
+        "padding-right": "75px"
       }
     },
+    "buttonDestination": "checkout",
+    "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "button": false,
+      "buttonWithQuantity": true
+    },
     "text": {
-      "button": "Add to cart"
-    }
+      "button": "ACHETEZ MAINTENANT ! "
+    },
+    "googleFonts": [
+      "Open Sans"
+    ]
   },
   "productSet": {
     "styles": {
@@ -256,6 +270,23 @@
           "margin-left": "0px",
           "margin-bottom": "0px"
         }
+      },
+      "button": {
+        ":hover": {
+          "background-color": "#5f9543"
+        },
+        "background-color": "#6aa54a",
+        ":focus": {
+          "background-color": "#5f9543"
+        },
+        "padding-left": "75px",
+        "padding-right": "75px"
+      },
+      "title": {
+        "font-family": "Helvetica Neue, sans-serif",
+        "font-weight": "bold",
+        "font-size": "26px",
+        "color": "#4c4c4c"
       }
     },
     "text": {
@@ -264,12 +295,35 @@
   },
   "option": {},
   "cart": {
+    "styles": {
+      "button": {
+        ":hover": {
+          "background-color": "#5f9543"
+        },
+        "background-color": "#6aa54a",
+        ":focus": {
+          "background-color": "#5f9543"
+        }
+      }
+    },
     "text": {
       "total": "Subtotal",
       "button": "Checkout"
     }
   },
-  "toggle": {}
+  "toggle": {
+    "styles": {
+      "toggle": {
+        "background-color": "#6aa54a",
+        ":hover": {
+          "background-color": "#5f9543"
+        },
+        ":focus": {
+          "background-color": "#5f9543"
+        }
+      }
+    }
+  }
 },
       });
     });
@@ -277,6 +331,8 @@
 })();
 /*]]>*/
 </script>
+      
+      <div id='collection-component-1778804173842'></div>
 <script type="text/javascript">
 _linkedin_partner_id = "9174578";
 window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
