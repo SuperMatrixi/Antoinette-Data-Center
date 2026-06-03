@@ -155,6 +155,105 @@
     </div>
     <div class="pgrid">
       <!-- BUSINESS CHINESE GUANXI -->
+<!-- Reddit Pixel -->
+<script>
+!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j23hr8ygbx41",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_j23hr8ygbx41');rdt('track', 'PageVisit');
+</script>
+<!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
+<!-- End Reddit Pixel -->
+
+      <!-- Example of advanced matching in your init call. -->
+rdt('init', 'a2_j23hr8ygbx41', {
+    email: '<EMAIL-HERE>',
+    phoneNumber: '<PHONE-NUMBER-HERE>',
+    externalId: '<EXTERNAL-ID-HERE>',
+    idfa: '<IDFA-HERE>',
+    aaid: '<AAID-HERE>',
+});
+
+      rdt('track', '{{Conversion event}}', {
+    conversionId: '{{Conversion ID}}'
+});
+
+      !function(w,d){
+  if(!w.rdt){
+    var p=w.rdt=function(){
+      p.sendEvent ? p.sendEvent.apply(p,arguments) : p.callQueue.push(arguments)
+    };
+    p.callQueue=[];
+    var t=d.createElement("script");
+    t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j23hr8ygbx41",t.async=!0;
+    var s=d.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(t,s)
+  }
+}(window,document);
+
+rdt('init', 'a2_j23hr8ygbx41', {
+  optOut: false,
+  useDecimalCurrencyValues: true,
+  partner: "SHOPIFY_PIXEL",
+  partner_version: "0.0.1"
+});
+
+analytics.subscribe("page_viewed", function listen(event) {
+  rdt('track', 'PageVisit', {
+    conversionId: event.id,
+    email: (init.data.customer || {}).email,
+    phoneNumber: (init.data.customer || {}).phone,
+    externalId: (init.data.customer || {}).id || event.clientId,
+  });
+});
+
+analytics.subscribe("product_viewed", function listen(event) {
+  rdt('track', 'ViewContent', {
+    conversionId: event.id,
+    products: [{
+      id:  event.data.productVariant.sku,
+      category:  event.data.productVariant.product.type,
+      name:  event.data.productVariant.product.title
+    }],
+    email: (init.data.customer || {}).email,
+    phoneNumber: (init.data.customer || {}).phone,
+    externalId: (init.data.customer || {}).id || event.clientId,
+  });
+});
+
+analytics.subscribe("product_added_to_cart", function listen(event) {
+  rdt('track', 'AddToCart', {
+    value: event.data.cartLine.cost.totalAmount.amount,
+    currency: event.data.cartLine.merchandise.price.currencyCode,
+    itemCount: event.data.cartLine.quantity,
+    conversionId: event.id,
+    products: [{
+      id:  event.data.cartLine.merchandise.sku,
+      category:  event.data.cartLine.merchandise.product.type,
+      name:  event.data.cartLine.merchandise.product.title
+    }],
+    email: (init.data.customer || {}).email,
+    phoneNumber: (init.data.customer || {}).phone,
+    externalId: (init.data.customer || {}).id || event.clientId,
+  });
+});
+
+analytics.subscribe("checkout_completed", function listen(event) {
+  rdt('track', 'Purchase', {
+    value: event.data.checkout.totalPrice.amount,
+    currency: event.data.checkout.currencyCode,
+    itemCount: event.data.checkout.lineItems.reduce(function clampItemsQuantity(total, item) { return total + item.quantity }, 0),
+    conversionId: event.id,
+    products: event.data.checkout.lineItems.map(function mapLineItem(item) {
+      return {
+        id: item.variant.sku,
+        category: item.variant.product.type,
+        name: item.title
+      };
+    }),
+    email: event.data.checkout.email || (init.data.customer || {}).email,
+    phoneNumber: event.data.checkout.phone || (init.data.customer || {}).phone,
+    externalId: (init.data.customer || {}).id || event.clientId,
+  });
+});
+      
       <article class="pcard rl" itemscope itemtype="https://schema.org/Course">
         <div class="pthumb"><img src="assets/images/Guanxiposter1.png" alt="Guanxi Accéléré — Business Chinese Paris, Bobigny" loading="lazy" itemprop="image"></div>
         <div class="pbody">
