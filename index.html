@@ -986,11 +986,11 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
       </div>
       <div class="cform rr">
         <h3>Envoyez-nous un message</h3>
-        <form onsubmit="submitContact(event)" novalidate>
-          <div class="fg"><label class="fl" for="fname">Votre nom *</label><input class="fi2" type="text" id="fname" placeholder="Jean Dupont" required autocomplete="name"></div>
-          <div class="fg"><label class="fl" for="femail">Email *</label><input class="fi2" type="email" id="femail" placeholder="jean@exemple.com" required autocomplete="email"></div>
-          <div class="fg"><label class="fl" for="fsubj">Sujet</label><input class="fi2" type="text" id="fsubj" placeholder="Guanxi / Location espace / Incubation..."></div>
-          <div class="fg"><label class="fl" for="fmsg">Message *</label><textarea class="fta" id="fmsg" placeholder="Parlez-nous de votre projet..." required></textarea></div>
+        <form action="https://formspree.io/f/xrewzozr" method="POST">
+          <div class="fg"><label class="fl" for="fname">Votre nom *</label><input class="fi2" type="text" id="fname" name="name" placeholder="Jean Dupont" required autocomplete="name"></div>
+          <div class="fg"><label class="fl" for="femail">Email *</label><input class="fi2" type="email" id="femail" name="email" placeholder="jean@exemple.com" required autocomplete="email"></div>
+          <div class="fg"><label class="fl" for="fsubj">Sujet</label><input class="fi2" type="text" id="fsubj" name="subject" placeholder="Guanxi / Location espace / Incubation..."></div>
+          <div class="fg"><label class="fl" for="fmsg">Message *</label><textarea class="fta" id="fmsg" name="message" placeholder="Parlez-nous de votre projet..." required></textarea></div>
           <button type="submit" class="btn btn-green" id="fsub" style="width:100%">✉️ Envoyer le message</button>
         </form>
       </div>
