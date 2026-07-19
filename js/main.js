@@ -99,6 +99,50 @@ function toggleBlog() {
   b.textContent = o ? '← Voir moins' : 'Lire la suite →';
 }
 
+/* ── SUBSTACK ARTICLES ── */
+async function initSubstackFeed() {
+  const wrap = document.getElementById('substack-feed');
+  if (!wrap) return;
+  const fallback = () => {
+    wrap.innerHTML = '';
+    const item = document.createElement('article');
+    item.className = 'substack-item';
+    item.innerHTML = '<h4>Substack Antoinette Data Center</h4><p>Consultez nos derniers articles publiés sur notre newsletter.</p><a class="rm" href="https://antoinettedatacenter.substack.com/" target="_blank" rel="noopener">Lire sur Substack →</a>';
+    wrap.appendChild(item);
+  };
+  try {
+    const res = await fetch('https://antoinettedatacenter.substack.com/feed', { signal: AbortSignal.timeout(4500) });
+    if (!res.ok) throw new Error('feed unavailable');
+    const xmlText = await res.text();
+    const doc = new DOMParser().parseFromString(xmlText, 'application/xml');
+    const items = [...doc.querySelectorAll('item')].slice(0, 3);
+    if (!items.length) throw new Error('no items');
+    wrap.innerHTML = '';
+    items.forEach((entry) => {
+      const title = (entry.querySelector('title')?.textContent || 'Article Substack').trim();
+      const link = (entry.querySelector('link')?.textContent || 'https://antoinettedatacenter.substack.com/').trim();
+      const descRaw = (entry.querySelector('description')?.textContent || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+      const desc = descRaw.slice(0, 150) + (descRaw.length > 150 ? '…' : '');
+      const card = document.createElement('article');
+      card.className = 'substack-item';
+      const h = document.createElement('h4');
+      h.textContent = title;
+      const p = document.createElement('p');
+      p.textContent = desc || 'Article publié sur Substack.';
+      const a = document.createElement('a');
+      a.className = 'rm';
+      a.href = link;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = 'Lire sur Substack →';
+      card.append(h, p, a);
+      wrap.appendChild(card);
+    });
+  } catch (e) {
+    fallback();
+  }
+}
+
 /* ── FAQ ── */
 function toggleFaq(btn) {
   const item = btn.closest('.fi');
@@ -165,4 +209,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initActiveNav();
   initGDPR();
+  initSubstackFeed();
 });
