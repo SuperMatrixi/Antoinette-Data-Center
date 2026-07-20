@@ -44,3 +44,9 @@
 6. Kalakoverse Médias — https://www.linkedin.com/company/kalakoverse/
 7. Become Business Academy — https://www.linkedin.com/company/become-business-academy/
 WE SUPPORT: Hello Mamiz — https://hellomamiz.com/
+
+## BLOG / SUBSTACK ARTICLES
+1. Le Chinois des Affaires — https://antoinettedatacenter.substack.com/p/le-chinois-des-affaires — Mars 2026 — Hermann Djoumessi
+2. La Pyramide de la Révolution IA : Les Fondations de la Guerre Géopolitique — https://antoinettedatacenter.substack.com/p/la-pyramide-de-la-revolution-ia — Avril 2026 — Hermann Djoumessi
+3. L'Agentique Publique : Le Nouvel Instrument de la Souveraineté — https://antoinettedatacenter.substack.com/p/lagentique-publique — Mai 2026 — Hermann Djoumessi
+4. Vibe Coding : Coder à la Vitesse de la Pensée — https://antoinettedatacenter.substack.com/p/vibe-coding — Juin 2026 — Hermann Djoumessi
