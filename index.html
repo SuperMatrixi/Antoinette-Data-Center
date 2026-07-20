@@ -470,7 +470,9 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
 <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=9174578&fmt=gif" />
 </noscript>
 
-<div id='product-component-1779828686295'></div>
+<div id='product-component-1779828686295'>
+  <a href="https://antoinette-data-store.myshopify.com/collections/all" target="_blank" rel="noopener" class="btn btn-green shopify-fallback-btn" style="width:100%;max-width:320px;margin:0 auto">🛍️ Ouvrir la boutique Shopify</a>
+</div>
 <script type="text/javascript">
 /*<![CDATA[*/
 (function () {
@@ -497,9 +499,12 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
       storefrontAccessToken: '2fef7d7eb0910ba2033c962c9d03f728',
     });
     ShopifyBuy.UI.onReady(client).then(function (ui) {
+      var productNode = document.getElementById('product-component-1779828686295');
+      if (!productNode) return;
+      productNode.innerHTML = '';
       ui.createComponent('product', {
         id: '15750987841880',
-        node: document.getElementById('product-component-1779828686295'),
+        node: productNode,
         moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
         options: {
   "product": {

@@ -142,6 +142,8 @@ section{scroll-margin-top:96px}
 /* ── PROGRAMS ── */
 #programs{padding:88px 0;background:var(--off)}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pgrid [id^="product-component-"],.pgrid [id^="collection-component-"]{display:flex;align-items:center;justify-content:center;min-height:72px}
+.shopify-fallback-btn{max-width:320px}
 .pcard{background:#fff;border-radius:var(--rl);overflow:hidden;box-shadow:var(--sh);transition:var(--tr);border:1px solid var(--bdr);display:flex;flex-direction:column;height:100%}
 .pcard:hover{transform:translateY(-6px);box-shadow:var(--shl)}
 .pthumb{width:100%;aspect-ratio:calc(var(--phi) / 1);min-height:160px;max-height:230px;overflow:hidden;background:var(--g)}
