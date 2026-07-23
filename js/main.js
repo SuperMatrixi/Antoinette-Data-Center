@@ -154,7 +154,7 @@ function toggleFaq(btn) {
 /* ── SCROLL REVEAL ── */
 function initReveal() {
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
   }, { threshold: .1 });
   document.querySelectorAll('.reveal,.rl,.rr').forEach(el => obs.observe(el));
 }
