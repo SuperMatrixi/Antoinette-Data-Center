@@ -175,8 +175,9 @@ p { color: var(--mid); }
 
 /* ── 9. VISION (golden 61.8 / 38.2 split) ────────────────────────── */
 .vgrid { display: grid; grid-template-columns: 1fr 1.618fr; gap: var(--sp-5); align-items: center; }
-.vgif { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 1 / 1.618; box-shadow: var(--shadow-md); }
-.vgif img { width: 100%; height: 100%; object-fit: cover; }
+/* object-fit:contain guarantees the full logo/text is always visible — never cropped */
+.vgif { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: var(--shadow-md); background: var(--navy); min-height: 320px; }
+.vgif img { width: 100%; height: 100%; object-fit: contain; }
 .vmetrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); margin-top: var(--sp-4); }
 .vm { background: var(--card); border: 1px solid var(--bdr); border-radius: var(--r-md); padding: 16px 12px; text-align: center; }
 .vmn { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--g); }
@@ -225,10 +226,13 @@ p { color: var(--mid); }
 
 .shopify-fallback-btn { display: flex !important; }
 
-/* Coach card — golden 61.8/38.2 split, portrait image on the golden minor side */
+/* Coach card — golden 61.8/38.2 split, portrait photo on the golden minor side.
+   NOTE: no aspect-ratio here on purpose — combining aspect-ratio with a CSS
+   Grid stretched item creates a feedback loop where the row balloons to fit
+   the image's derived height. A hard max-height keeps the card compact. */
 .coach-card { display: grid; grid-template-columns: 1.618fr 1fr; background: var(--card); border: 1px solid var(--bdr); border-radius: var(--r-lg); overflow: hidden; margin-bottom: var(--sp-4); box-shadow: var(--shadow-sm); }
 .coach-body { padding: var(--sp-5); }
-.coach-card > img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1 / var(--phi); }
+.coach-card > img { width: 100%; height: 100%; max-height: 280px; object-fit: cover; display: block; }
 
 /* Webinar banner */
 .webinar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 21px; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); border-radius: var(--r-lg); padding: var(--sp-5); margin-bottom: var(--sp-4); }
@@ -247,18 +251,21 @@ p { color: var(--mid); }
 .sc { background: var(--card); border: 1px solid var(--bdr); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform .25s; }
 .sc:hover { transform: translateY(-4px); }
 /* Golden rectangle thumbnail, consistent with .pthumb */
-.sci { aspect-ratio: var(--phi) / 1; overflow: hidden; }
+.sci { aspect-ratio: var(--phi) / 1; min-height: 120px; overflow: hidden; background: var(--bg); }
 .sci img { width: 100%; height: 100%; object-fit: cover; }
 .scb { padding: var(--sp-3); }
 .scico { font-size: 22px; margin-bottom: 6px; }
 .scn { font-weight: 800; font-size: 14.5px; margin-bottom: 3px; }
 .scd { font-size: 12px; color: var(--mut); line-height: 1.5; }
 
-/* Gallery carousel — golden rectangle slides, 3 per row on desktop */
-.cw { overflow: hidden; border-radius: var(--r-lg); }
+/* Gallery carousel — golden rectangle slides, 3 per row on desktop.
+   min-width/min-height are a safety net: if a slide's aspect-ratio can't
+   resolve for any reason, the row still renders as visible boxes instead
+   of collapsing to zero height. */
+.cw { overflow: hidden; border-radius: var(--r-lg); min-height: 100px; }
 .ct { display: flex; gap: 13px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 2px; }
 .ct::-webkit-scrollbar { display: none; }
-.cs { flex: 0 0 calc((100% - 2 * 13px) / 3); scroll-snap-align: start; border-radius: var(--r-md); overflow: hidden; aspect-ratio: var(--phi) / 1; background: var(--card); border: 1px solid var(--bdr); }
+.cs { flex: 0 0 calc((100% - 2 * 13px) / 3); min-width: 160px; min-height: 120px; scroll-snap-align: start; border-radius: var(--r-md); overflow: hidden; aspect-ratio: var(--phi) / 1; background: var(--bg); border: 1px solid var(--bdr); }
 .cs img { width: 100%; height: 100%; object-fit: cover; }
 .cctrl { display: flex; align-items: center; justify-content: center; gap: 13px; margin-top: var(--sp-3); }
 .cbtn { width: 38px; height: 38px; border-radius: 50%; background: var(--card); border: 1px solid var(--bdr); font-size: 18px; display: flex; align-items: center; justify-content: center; transition: background .2s, border-color .2s; }
@@ -438,9 +445,9 @@ footer .fgrid { display: grid; grid-template-columns: 1.618fr 1fr 1fr 1fr; gap: 
   .pgrid, .mgrid { grid-template-columns: 1fr; }
   .cgrid { grid-template-columns: 1fr; }
   .vgrid { grid-template-columns: 1fr; }
-  .vgif { aspect-ratio: var(--phi) / 1; max-width: 480px; margin: 0 auto; }
+  .vgif { aspect-ratio: 4 / 5; max-width: 420px; min-height: 280px; margin: 0 auto; }
   .coach-card { grid-template-columns: 1fr; }
-  .coach-card > img { aspect-ratio: var(--phi) / 1; order: -1; }
+  .coach-card > img { max-height: 220px; order: -1; }
   footer .fgrid { grid-template-columns: 1fr 1fr; }
   .cs { flex: 0 0 calc((100% - 13px) / 2); }
 }
@@ -479,4 +486,14 @@ footer .fgrid { display: grid; grid-template-columns: 1.618fr 1fr 1fr 1fr; gap: 
 /* ── 25. ACCESSIBILITY ────────────────────────────────────────────── */
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
   outline: 2px solid var(--g); outline-offset: 2px;
-}v
+}
+
+/* ── 26. IMAGE FALLBACK ───────────────────────────────────────────────
+   Applied via onerror="" on <img> tags across the site (blog cards,
+   gallery carousel) so a missing/mistyped image file degrades to a
+   tidy placeholder tile instead of a broken-image icon or blank gap. */
+.img-fallback { position: relative; background: linear-gradient(135deg, var(--navy), var(--navy-2)); display: block; }
+.img-fallback::after {
+  content: '🖼️'; position: absolute; inset: 0; display: flex;
+  align-items: center; justify-content: center; font-size: 28px; opacity: .6;
+}
