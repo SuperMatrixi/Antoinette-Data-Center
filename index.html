@@ -232,7 +232,7 @@
     <div class="pgrid" style="margin-bottom:36px">
       <!-- HAi PROGRAMME 1 -->
       <article class="pcard reveal" itemscope itemtype="https://schema.org/Course">
-        <div class="pthumb" style="background:linear-gradient(135deg,#1a8f50,#22b064);display:flex;align-items:center;justify-content:center">
+        <div class="pthumb pthumb-icon" style="background:linear-gradient(135deg,#1a8f50,#22b064);display:flex;align-items:center;justify-content:center">
           <div style="text-align:center;color:#fff">
             <div style="font-size:42px;margin-bottom:6px">🧠</div>
             <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85">Programme 1 · 2 Jours</div>
@@ -256,7 +256,7 @@
 
       <!-- HAi PROGRAMME 2 -->
       <article class="pcard reveal" itemscope itemtype="https://schema.org/Course">
-        <div class="pthumb" style="background:linear-gradient(135deg,#D9A441,#b8862e);display:flex;align-items:center;justify-content:center">
+        <div class="pthumb pthumb-icon" style="background:linear-gradient(135deg,#D9A441,#b8862e);display:flex;align-items:center;justify-content:center">
           <div style="text-align:center;color:#fff">
             <div style="font-size:42px;margin-bottom:6px">🏢</div>
             <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85">Programme 2 · 1 Semaine</div>
@@ -280,7 +280,7 @@
 
       <!-- HAi PROGRAMME 3 -->
       <article class="pcard reveal" itemscope itemtype="https://schema.org/Course">
-        <div class="pthumb" style="background:linear-gradient(135deg,#0a1628,#1a3a5c);display:flex;align-items:center;justify-content:center">
+        <div class="pthumb pthumb-icon" style="background:linear-gradient(135deg,#0a1628,#1a3a5c);display:flex;align-items:center;justify-content:center">
           <div style="text-align:center;color:#fff">
             <div style="font-size:42px;margin-bottom:6px">🚀</div>
             <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85">Programme 3 · 3 Jours</div>
@@ -304,7 +304,7 @@
 
       <!-- HAi PROGRAMME 4 - COMING SOON -->
       <article class="pcard reveal" itemscope itemtype="https://schema.org/Course" style="border:2px dashed rgba(217,164,65,.5);background:linear-gradient(135deg,#fff 0%,#fffdf5 100%)">
-        <div class="pthumb" style="background:linear-gradient(135deg,#D9A441,#f0c060);display:flex;align-items:center;justify-content:center;position:relative">
+        <div class="pthumb pthumb-icon" style="background:linear-gradient(135deg,#D9A441,#f0c060);display:flex;align-items:center;justify-content:center;position:relative">
           <div style="text-align:center;color:#fff">
             <div style="font-size:42px;margin-bottom:6px">⚡</div>
             <div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85">Programme 4 · 4 Jours</div>
@@ -580,7 +580,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
 
       <!-- ELLEN KOUNTZ -->
       <article class="pcard rr" itemscope itemtype="https://schema.org/Course">
-        <div class="pthumb"><img src="assets/images/EllenKountzprogam1.jpg" alt="Leadership & Media Mastery — Ellen Kountz BFMTV RTL" loading="lazy" itemprop="image" decoding="async"></div>
+        <div class="pthumb pthumb-contain"><img src="assets/images/EllenKountzprogam1.jpg" alt="Leadership & Media Mastery — Ellen Kountz BFMTV RTL" loading="lazy" itemprop="image" decoding="async"></div>
         <div class="pbody">
           <div class="ptag">👑 Leadership</div>
           <h3 class="ptitle" itemprop="name">LEADERSHIP &amp; MEDIA MASTERY 👑</h3>
@@ -639,7 +639,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
       <div><h3>🎯 Prêt à passer à l'action ?</h3><p>Places limitées · Réponse en 24h · Support WhatsApp post-formation</p></div>
       <div class="bbn-imgs">
         <a href="https://wa.me/33601753043" target="_blank" rel="noopener"><img src="assets/logos/BOOKNOWLogo1.png" alt="Réserver" onerror="this.style.display='none'" loading="lazy" decoding="async"></a>
-        <a href="https://www.peerspace.com/uk/pages/listings/68e0596df41e8c5418a57924" target="_blank" rel="noopener"><img src="assets/images/AEOGEOSEOLogo1.png" alt="Front page slide" style="width:72px;height:50px;object-fit:cover" onerror="this.style.display='none'" loading="lazy" decoding="async"></a>
+        <a href="https://www.peerspace.com/uk/pages/listings/68e0596df41e8c5418a57924" target="_blank" rel="noopener"><img src="assets/images/AEOGEOSEOLogo1.png" alt="Front page slide" onerror="this.style.display='none'" loading="lazy" decoding="async"></a>
       </div>
     </div>
   </div>
@@ -1074,5 +1074,40 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
 
 <script src="js/chatbot.js"></script>
 <script src="js/main.js"></script>
+<script>
+/* Gallery carousel — continuous auto-scroll. Self-contained on purpose: it only
+   reads/writes #ct's scrollLeft, so it can't conflict with any prev/next-button
+   or dot-indicator logic that may already live in main.js. Pauses on hover,
+   touch, or manual scroll so visitors keeping control feels natural. */
+(function () {
+  var track = document.getElementById('ct');
+  if (!track) return;
+  var paused = false;
+  var resumeTimer = null;
+
+  function pauseThenResume() {
+    paused = true;
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(function () { paused = false; }, 3500);
+  }
+
+  track.addEventListener('mouseenter', function () { paused = true; });
+  track.addEventListener('mouseleave', function () { paused = false; });
+  track.addEventListener('touchstart', pauseThenResume, { passive: true });
+  track.addEventListener('wheel', pauseThenResume, { passive: true });
+
+  function tick() {
+    if (!paused && !document.hidden) {
+      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+      if (atEnd) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: 1, behavior: 'auto' });
+      }
+    }
+  }
+  setInterval(tick, 30);
+})();
+</script>
 </body>
 </html>
